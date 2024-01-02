@@ -1,5 +1,5 @@
 import express from 'express';
-import { formularioLogin, formularioRegistro, formularioOlvidePassword, registrar } from '../controllers/usuarioController.js'
+import { formularioLogin, formularioRegistro, formularioOlvidePassword, registrar, confirmar} from '../controllers/usuarioController.js'
 
 //Crear la app
 const router = express.Router();
@@ -9,7 +9,11 @@ router.get('/login', formularioLogin) //esta funcion viene definida en el contro
 
 router.get('/registro', formularioRegistro)
 router.post('/registro', registrar)
+
+router.get('/confirmar/:token', confirmar)
 router.get('/olvide-Password', formularioOlvidePassword)
+
+
 
 
 export default router
