@@ -36,7 +36,7 @@ const autenticar = async (req, res) => {
     const { email, password } = req.body
 
     //comprobar si el usuario existe
-    const usuario = await Usuario.findOne({where:{email}})
+    const usuario = await Usuario.findOne({ where: { email } })
 
     if (!usuario) {
         return res.render('auth/login', {
@@ -47,7 +47,7 @@ const autenticar = async (req, res) => {
     }
 
     //Comprobar si el usuario esta confirmado
-    if(!usuario.confirmado){
+    if (!usuario.confirmado) {
         return res.render('auth/login', {
             pagina: 'Iniciar sesion',
             csrfToken: req.csrfToken(),
@@ -56,7 +56,7 @@ const autenticar = async (req, res) => {
     }
 
     //revisar el password
-    if(!usuario.verificarPassword(password)){
+    if (!usuario.verificarPassword(password)) {
         return res.render('auth/login', {
             pagina: 'Iniciar sesion',
             csrfToken: req.csrfToken(),
@@ -68,14 +68,14 @@ const autenticar = async (req, res) => {
     }
 
     //autenticar al usuario
-    const token = generarJWT({ id: usuario.id , nombre: usuario.nombre });
-    
+    const token = generarJWT({ id: usuario.id, nombre: usuario.nombre });
+
     //almacenar en cookies
     return res.cookie('_token', token, {
         httpOnly: true,
         //secure: true
     }).redirect('/mis-propiedades')
-    
+
 }
 
 const formularioRegistro = (req, res) => {
