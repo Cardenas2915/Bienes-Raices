@@ -43,7 +43,8 @@ const Propiedad = db.define('propiedades', {
     },
     imagen: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        defaultValue: null
     },
     publicado: {
         type: DataTypes.BOOLEAN,
