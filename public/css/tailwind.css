@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* se reescribe la clase para los enlances de leaflet */
+.leaflet-container a {
+    color: #fff
+}
