@@ -1,5 +1,5 @@
 import express from 'express';
-import { formularioLogin, autenticar, formularioRegistro, formularioOlvidePassword, registrar, confirmar, resetPassword, comprobarToken, nuevopassword } from '../controllers/usuarioController.js'
+import { formularioLogin, autenticar,cerrarSesion, formularioRegistro, formularioOlvidePassword, registrar, confirmar, resetPassword, comprobarToken, nuevopassword } from '../controllers/usuarioController.js'
 
 //Crear la app
 const router = express.Router();
@@ -7,6 +7,9 @@ const router = express.Router();
 //Routing
 router.get('/login', formularioLogin) //esta funcion viene definida en el controlador que es donde se esta retornando la vista
 router.post('/login', autenticar) 
+
+//cerrar sesion
+router.post('/cerrar-sesion', cerrarSesion)
 
 router.get('/registro', formularioRegistro)
 router.post('/registro', registrar)
